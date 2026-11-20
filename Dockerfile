@@ -19,7 +19,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --locked --no-dev --no-install-project
 
 # 2) Código do app
-COPY app.py ./
+COPY app/ ./app/
 
 # Roda sem root
 RUN useradd --create-home appuser
@@ -30,7 +30,7 @@ EXPOSE 8501
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8501/_stcore/health', timeout=3)"
 
-CMD ["streamlit", "run", "app.py", \
+CMD ["streamlit", "run", "app/app.py", \
      "--server.address=0.0.0.0", \
      "--server.port=8501", \
      "--server.headless=true", \

@@ -1,7 +1,7 @@
 [project]
 name = "ec2-deploy"
 version = "0.1.0"
-description = "Add your description here"
+description = "App Streamlit de exemplo com deploy em EC2 via Terraform e Docker"
 readme = "README.md"
 authors = [
     { name = "Levi7Castro", email = "marcoslevi2014.mll@gmail.com" }
@@ -12,10 +12,3 @@ dependencies = [
     "pandas>=3.1.1",
     "streamlit>=1.45",
 ]
-
-[project.scripts]
-ec2-deploy = "ec2_deploy:main"
-
-[build-system]
-requires = ["uv_build>=0.13.5,<0.14.0"]
-build-backend = "uv_build"

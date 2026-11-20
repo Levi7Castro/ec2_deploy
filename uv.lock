@@ -200,7 +200,7 @@ wheels = [
 [[package]]
 name = "ec2-deploy"
 version = "0.1.0"
-source = { editable = "." }
+source = { virtual = "." }
 dependencies = [
     { name = "numpy" },
     { name = "pandas" },

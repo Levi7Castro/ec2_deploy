@@ -1,14 +1,13 @@
+# Só o necessário para a imagem: pyproject.toml, uv.lock e app/
 .git
 .gitignore
 .venv
 __pycache__/
 *.py[cod]
 
-# Terraform (não vai pra imagem)
-.terraform/
-*.tf
+# Infraestrutura (não vai pra imagem)
+infra/
 *.tfstate*
-.terraform.lock.hcl
 
 # Segredos
 .env

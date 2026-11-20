@@ -1,21 +1,3 @@
-variable "instance_type" {
-  description = "Tipo da instância EC2"
-  type        = string
-  default     = "t3.micro"
-}
-
-variable "key_name" {
-  description = "Nome de um key pair existente na AWS para SSH (opcional)"
-  type        = string
-  default     = null
-}
-
-variable "ssh_cidr" {
-  description = "CIDR liberado para SSH, ex: \"SEU.IP.PUBLICO/32\". Se null, a porta 22 fica fechada"
-  type        = string
-  default     = null
-}
-
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -96,7 +78,7 @@ resource "aws_instance" "web" {
     systemctl enable --now docker
 
     # Clonar o repositório do GitHub (precisa ser público)
-    git clone https://github.com/Levi7Castro/ec2_deploy.git /app
+    git clone ${var.repo_url} /app
 
     # Construir e executar o contêiner Docker
     cd /app
@@ -107,12 +89,4 @@ resource "aws_instance" "web" {
   tags = {
     Name = "HelloStreamlit"
   }
-}
-
-output "instance_public_ip" {
-  value = aws_instance.web.public_ip
-}
-
-output "app_url" {
-  value = "http://${aws_instance.web.public_ip}:8501"
 }
