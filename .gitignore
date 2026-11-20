@@ -1,0 +1,27 @@
+# Plugins e módulos baixados pelo init
+.terraform/
+
+# State (pode conter dados sensíveis) e seus backups
+*.tfstate
+*.tfstate.*
+
+# Logs de crash
+crash.log
+crash.*.log
+
+# Variáveis com valores secretos
+*.tfvars
+*.tfvars.json
+
+# Overrides locais
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Plano salvo
+*.tfplan
+
+# Configuração local do CLI
+.terraformrc
+terraform.rc
