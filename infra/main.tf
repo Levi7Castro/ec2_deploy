@@ -27,3 +27,22 @@ provider "aws" {
     }
   }
 }
+
+# ---------------------------------------------------------------
+# Módulos
+# ---------------------------------------------------------------
+
+module "network" {
+  source = "./modules/network"
+}
+
+module "compute" {
+  source = "./modules/compute"
+
+  vpc_id        = module.network.vpc_id
+  subnet_id     = module.network.public_subnet_id
+  instance_type = var.instance_type
+  key_name      = var.key_name
+  ssh_cidr      = var.ssh_cidr
+  repo_url      = var.repo_url
+}

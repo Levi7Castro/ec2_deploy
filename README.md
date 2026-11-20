@@ -38,11 +38,13 @@ State do Terraform → bucket S3 (versionado, privado, com lockfile)
 │   └── app.py              # app Streamlit
 ├── infra/
 │   ├── bootstrap/
-│   │   └── main.tf         # bucket S3 do state (rodar uma vez)
-│   ├── main.tf             # provider + backend S3
+│   │   ├── main.tf         # bucket S3 do state (rodar uma vez)
+│   │   └── outputs.tf      # nome do bucket
+│   ├── modules/
+│   │   ├── network/        # VPC, subnet, internet gateway, rotas
+│   │   └── compute/        # AMI, security group, instância
+│   ├── main.tf             # provider + backend S3 + chamada dos módulos
 │   ├── variables.tf        # variáveis (região, tipo, SSH, repo)
-│   ├── vpc.tf              # VPC, subnet, internet gateway, rotas
-│   ├── ec2.tf              # AMI, security group, instância
 │   └── outputs.tf          # IP e URL do app
 ├── Dockerfile
 ├── .dockerignore
@@ -159,4 +161,4 @@ aws ec2 describe-instances --region us-east-1 \
 | App não abre depois do `apply` | Espere alguns minutos. O build roda no boot. |
 | Ainda não abre | Log do boot: `aws ec2 get-console-output --instance-id <id> --latest --output text` ou, via SSH, `/var/log/cloud-init-output.log` |
 | `git clone` falhou no log | O repositório está público? As mudanças foram enviadas com push? |
-| Aba "Servidor" diz que não está na AWS | O `http_put_response_hop_limit` precisa ser `2` (já configurado em `ec2.tf`) |
+| Aba "Servidor" diz que não está na AWS | O `http_put_response_hop_limit` precisa ser `2` (já configurado em `infra/modules/compute/main.tf`) |

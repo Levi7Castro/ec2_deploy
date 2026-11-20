@@ -12,7 +12,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_security_group" "allow_ssh_http" {
   name        = "streamlit-sg"
   description = "Streamlit (8501) e SSH opcional"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = var.vpc_id
 
   ingress {
     description = "Streamlit"
@@ -50,7 +50,7 @@ resource "aws_security_group" "allow_ssh_http" {
 resource "aws_instance" "web" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.instance_type
-  subnet_id              = aws_subnet.public.id
+  subnet_id              = var.subnet_id
   vpc_security_group_ids = [aws_security_group.allow_ssh_http.id]
   key_name               = var.key_name
 
