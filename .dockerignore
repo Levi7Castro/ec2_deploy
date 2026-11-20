@@ -1,0 +1,22 @@
+.git
+.gitignore
+.venv
+__pycache__/
+*.py[cod]
+
+# Terraform (não vai pra imagem)
+.terraform/
+*.tf
+*.tfstate*
+.terraform.lock.hcl
+
+# Segredos
+.env
+.env.*
+*.pem
+*.key
+.streamlit/secrets.toml
+
+Dockerfile
+.dockerignore
+README.md
