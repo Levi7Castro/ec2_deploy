@@ -18,7 +18,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "meu_bucket" {
-  bucket = "levi-tfstate-ec2-deploy-20261120"   # troque por um nome só seu
+  bucket = "levi-tfstate-ec2-deploy-20261120" # troque por um nome só seu
 
   tags = {
     Name        = "My bucket"
