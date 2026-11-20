@@ -25,3 +25,43 @@ override.tf.json
 # Configuração local do CLI
 .terraformrc
 terraform.rc
+# ---------------------------------------------------------------
+# Python / uv
+# ---------------------------------------------------------------
+# Ambiente virtual
+.venv/
+venv/
+
+# Bytecode e caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Build / empacotamento
+build/
+dist/
+*.egg-info/
+
+# ---------------------------------------------------------------
+# Streamlit
+# ---------------------------------------------------------------
+# Pode conter chaves e senhas
+.streamlit/secrets.toml
+
+# ---------------------------------------------------------------
+# Segredos e chaves
+# ---------------------------------------------------------------
+.env
+.env.*
+*.pem
+*.key
+
+# ---------------------------------------------------------------
+# Editor / SO
+# ---------------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
